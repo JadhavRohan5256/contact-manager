@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+	th:replace="base-view::layout(~{::main})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<main class="container main-container">
+		<div class="toast" th:if="${message != null}">
+			<div class="toast-wrapper">
+				<p th:class="${message.messageType}"
+					th:text="${message.messageDesc}"></p>
+				<i class="fa-solid fa-xmark close-toast"></i>
+			</div>
+		</div>
+
+		<div class="success-wrapper">
+			<h2>You have signed up successfully!</h2>
+			<p>Please check your email to verify your account.</p>
+			<h3>
+				<a th:href="@{/signin}">Click here to Login</a>
+			</h3>
+		</div>
+	</main>
+</body>
+</html>

@@ -12,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -62,6 +61,11 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<Contact> contact;
+
+	private boolean enabled = false;
+	
+	@Column(name="verification_code", length = 256)
+	private String verificationCode;
 
 	public int getUserId() {
 		return userId;
@@ -135,13 +139,30 @@ public class User {
 		this.contact = contact;
 	}
 
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", contactNo="
 				+ contactNo + ", email=" + email + ", password=" + password + ", profileName=" + profileName
-				+ ", userRole=" + userRole + ", contact=" + contact + "]";
+				+ ", userRole=" + userRole + ", contact=" + contact + ", enabled=" + enabled + ", verificationCode="
+				+ verificationCode + "]";
 	}
-	
+
 	
 	
 }

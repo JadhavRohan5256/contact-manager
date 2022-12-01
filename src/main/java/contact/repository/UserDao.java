@@ -20,4 +20,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
 	
 	@Query("Select u from User u where u.password =:pass")
 	public User getUserByPassword(@Param("pass") String password);
+	
+	@Query("Select u from User u where u.verificationCode =:code")
+	public User getUserByCode(@Param("code") String code);
 }

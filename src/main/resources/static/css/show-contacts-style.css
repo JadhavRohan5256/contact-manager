@@ -106,8 +106,9 @@ tbody tr:nth-of-type(odd) a[href^="mailto"] {
 	background-color: var(--error-bg);	
 	color: var(--error-color);
 }
-.not-found td h2{
+.not-found h2{
 	font-weight: 500;
+	text-align: center;
 }
 @media only screen and (max-width: 900px) {
 	.table-wrapper {

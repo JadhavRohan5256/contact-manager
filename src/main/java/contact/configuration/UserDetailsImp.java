@@ -49,7 +49,7 @@ public class UserDetailsImp implements UserDetails{
 
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return user.isEnabled();
 	}
 
 }

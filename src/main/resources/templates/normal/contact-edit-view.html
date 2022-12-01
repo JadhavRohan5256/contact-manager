@@ -11,7 +11,7 @@
 		<div class="add-contact-wrapper">
 			<form th:action="@{/user/editted}" method="post"
 				enctype="multipart/form-data" th:object="${contact}">
-				<h2 class="add-contact-title">add contact</h2>
+				<h2 class="add-contact-title">Edit contact</h2>
 
 				<div class="form-box" th:if="${message != null}">
 					<p th:class="${message.messageType}"

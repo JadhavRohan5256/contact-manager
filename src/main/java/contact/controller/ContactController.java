@@ -112,7 +112,7 @@ public class ContactController {
 		// show contact page controller
 		@GetMapping("/contacts/{pageId}")
 		public String getContactList(@PathVariable("pageId") Integer page, Principal principal, Model model) {
-			final int recordPerPage = 10;
+			final int recordPerPage = 1;
 			User user = userDao.getUserByEmail(principal.getName());
 			Pageable pageable = PageRequest.of(page, recordPerPage);
 			Page<Contact> list = contactDao.getContactsByContactId(user.getUserId(), pageable);
