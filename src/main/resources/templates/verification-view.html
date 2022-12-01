@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org/"
+	th:replace="base-view::layout(~{::main})">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login page</title>
+</head>
+<body>
+	<main class="login-main">
+		<div class="container login-wrapper">
+			<form th:action="@{/verify-otp}" method="post">
+				<div class="form-box">
+					<h2 class="login-title">Verify Otp</h2>
+				</div>
+				<div class="form-box message" th:if="${message != null}">
+					<p th:class="${message.messageType}" th:text="${message.messageDesc}"></p>
+				</div>
+				<div class="form-box">
+					<label for="otp">Enter Otp</label> 
+					<input 
+						type="number"
+						name="otp" 
+						id="otp" 
+						placeholder="Enter otp here.." 
+					 />
+				</div>
+				<div class="form-box">
+					<button type="submit" class="login-btn">Send</button>
+				</div>
+				<div class="form-box">
+					<a th:href="@{/signin}" class="form-link">Login</a>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+
+</html>

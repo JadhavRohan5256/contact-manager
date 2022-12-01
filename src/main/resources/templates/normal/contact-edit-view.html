@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/user-base-view::layout(~{::main})">
+<head>
+<meta charset="UTF-8" />
+<title>add contact</title>
+</head>
+<body>
+	<main class="main-container container">
+		<div class="add-contact-wrapper">
+			<form th:action="@{/user/editted}" method="post"
+				enctype="multipart/form-data" th:object="${contact}">
+				<h2 class="add-contact-title">add contact</h2>
+
+				<div class="form-box" th:if="${message != null}">
+					<p th:class="${message.messageType}"
+						th:text="${message.messageDesc}"></p>
+				</div>
+				<div class="form-box">
+					<input 
+						type="number"
+						name="contactId" id="contactId"
+						th:value="${contact.getContactId()}"
+					 	hidden
+					 />
+				</div>
+				<div class="form-box">
+					<label for="firstName">first name</label> 
+					<input 
+						type="text"
+						name="firstName" id="contactFirstName"
+						placeholder="Enter first name here.."
+						th:value="${contact.getFirstName()}"
+					 />
+					<p  th:class="${#fields.hasErrors('firstName')} ? error : ''"
+						th:each="e : ${#fields.errors('firstName')}" 
+						th:text="${e}"></p>
+				</div>
+				<div class="form-box">
+					<label for="lastName">last name</label> 
+					<input 
+						type="text"
+						name="lastName" id="contactLastName"
+						placeholder="Enter last name here.."
+						th:value="${contact.getLastName()}"
+					/>
+					<p
+						th:if="${#fields.hasErrors('lastName')}"
+						class="error"
+						th:each="e: ${#fields.errors('lastName')}"
+						th:text="${e}"></p>
+				</div>
+				<div class="form-box">
+					<label for="contactNo">contact no</label> 
+					<input 
+						type="text"
+						name="contactNo" id="contactContactNo"
+						placeholder="Enter contact number here..."
+						th:value="${contact.getContactNo()}"
+					 />
+					<p 
+					 	th:if="${#fields.hasErrors('contactNo')}"
+					 	class="error"
+					 	th:each="e : ${#fields.errors('contactNo')}"
+					 	th:text="${e}"></p>
+				</div>
+				<div class="form-box">
+					<label for="email">Email</label> 
+					<input 
+						type="text" 
+						name="email"
+						id="contactEmail" 
+						placeholder="Enter email here.."
+						th:value="${contact.getEmail()}"
+					/>
+					<p 
+						th:if="${#fields.hasErrors('email')}"
+						class="error"
+						th:each="e : ${#fields.errors('email')}"
+						th:text="${e}"></p>
+					<p
+					  th:if="${emailError != null}"
+					  class="error"
+					  th:text="${emailError}"
+					  ></p>
+				</div>
+				<div class="form-box">
+					<label for="birthDate">birth date</label> 
+					<input 
+						type="date"
+						name="birthDate" 
+						id="contactBirthDate"
+						th:value="${contact.getBirthDate()}"
+					/>
+					<p 
+						th:if="${birthDateError != null}"
+						class="error"
+						th:text="${birthDateError}"></p>
+				</div>
+				<div class="form-box">
+					<input type="file" name="profileFile" id="editFile" /> 
+					<label for="editFile"> 
+						<span class="label-left"> 
+							<span class="browse">Browse</span> 
+							<span class="edit-selected-file">select file</span>
+						</span> 
+						<small class="edit-file-size"></small>
+					</label>
+					<p 
+						th:if="${fileError != null}"
+						class="error"
+						th:text="${fileError}"
+						></p>
+				</div>
+				<img th:src="@{'/uploaded_profile/contact_profile/'+ ${contact.getProfileName()}}" alt="" class="edit-selected-file-view"/>
+				<div class="form-box">
+					<button class="contact-btn">Update</button>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+</html>

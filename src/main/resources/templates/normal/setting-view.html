@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org/"
+	th:replace="normal/user-base-view::layout(~{::main})">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>forgate page</title>
+</head>
+<body>
+	<main class="main-container container">
+		<div class="container setting-wrapper">	
+			<form th:action="@{/user/update-password}" method="post">
+				<div class="form-box">
+					<h2 class="login-title">Change Password</h2>
+				</div>
+				<div class="form-box message" th:if="${message != null}">
+					<p th:class="${message.messageType}" th:text="${message.messageDesc}"></p>
+				</div>
+				<div class="form-box">
+					<label for="oldPassword">Old Password</label> 
+					<input 
+						type="password"
+						name="oldPassword" 
+						id="username" 
+						placeholder="Enter old password here.." 
+					 />
+				</div>
+				<div class="form-box">
+					<label for="newPassword">New Password</label> 
+					<input 
+						type="password"
+						name="newPassword" 
+						id="newPassword" 
+						placeholder="Enter new password here.." 
+					 />
+				</div>
+				<div class="form-box">
+					<button type="submit" class="signup-btn">Change</button>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+
+</html>

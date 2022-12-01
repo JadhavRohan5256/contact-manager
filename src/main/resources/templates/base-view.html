@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" th:fragment="layout(content)">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" th:href="@{css/header-style.css}">
+<link rel="stylesheet" th:href="@{css/home-view-style.css}">
+<link rel="stylesheet" th:href="@{css/about-view-style.css}">
+<link rel="stylesheet" th:href="@{css/login-view-style.css}">
+<link rel="stylesheet" th:href="@{css/signup-view-style.css}">
+</head>
+<body>
+	<header class="nav-bar">
+		<div class="container nav-bar-wrapper">
+			<div class="nav-bar-left">
+				<h2 class="logo"><a th:href="@{/}">contact manager</a></h2>
+				<input 
+					type="checkbox" 
+					id="themeFlag"
+					name="themeFlag"
+				/>
+				<label for="themeFlag" class="theme-mode">
+					<i class="fa-solid fa-moon theme-icons"></i>
+				</label>
+			</div>
+			<input 
+				type="checkbox" 
+				name="check" 
+				id="check"
+			/> 
+			<label for="check" class="menu-icon"> 
+				<span class="top"></span> 
+				<span class="middle"></span> 
+				<span class="bottom"></span>
+			</label>
+			<div class="nav-bar-right">
+				<ul class="nav-link">
+					<li>
+						<a th:href="@{/}">
+							<i class="fa-solid fa-house-user nav-icons"></i>
+							home
+						</a>
+					</li>
+					<li>
+						<a th:href="@{about-us}">
+							<i class="fa-solid fa-address-card nav-icons"></i>
+							about
+						</a>
+					</li>
+					<li>
+						<a th:href="@{/signin}">
+							<i class="fa-solid fa-key nav-icons"></i>
+							login
+						</a>
+					</li>
+					<li>
+						<a th:href="@{/signup}">
+							<i class="fa-solid fa-right-to-bracket nav-icons"></i>
+							signup
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!-- main container -->
+	<main id="root" th:replace="${content}">
+	
+	</main>
+	
+	<!-- external JavaScript -->
+	<script type="module" th:src="@{js/signup-view-script.js}" ></script>
+	<script type="module" th:src="@{js/header-script.js}" ></script>
+</body>
+
+</html>

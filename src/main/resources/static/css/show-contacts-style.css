@@ -1,0 +1,123 @@
+.table-wrapper {
+	width: 100%;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	color: var(--font-color);
+}
+thead {
+	background-color: var(--primary-color);
+	color: #121212;
+}
+
+tr th {
+	font-weight: 500;
+	text-transform: capitalize;
+	padding: 0.5rem;
+	text-align: left;
+}
+tbody tr:nth-of-type(odd) {
+	background-color: var(--bg-surface-color);
+	color: var(--font-color) !important;
+}
+tr td {
+	text-align: left;
+	padding: 0.5rem;
+	font-weight: 400;
+}
+.table-profile {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+	transform: none;
+	transition: transform 0.5s ease-in-out;
+	text-transform: capitalize;
+}
+.table-profile:hover {
+	transform: scale(1.2);
+}
+.td-first-name,
+.td-last-name {
+	text-transform: capitalize;
+}
+a[href^="mailto"] {
+	text-decoration: none;
+	color: var(--font-color);
+}
+tbody tr:nth-of-type(odd) a[href^="mailto"] {
+	color: #ffffff;
+}
+.operation {
+	position: relative;
+}
+.record-edit {
+	text-align: end;
+	padding: 0.2rem 0.5rem;
+}
+.record-delete {
+	text-align: left;
+	padding: 0.2rem 0.5rem;
+}
+.edit {
+	color: var(--success-color);
+	font-size: 1.2rem;
+}
+.delete{
+	color: var(--error-color);	
+	font-size: 1.2rem;
+}
+.record-edit a:hover {
+	opacity: 0.8;
+}
+.record-delete a:hover {
+	opacity: 0.8;
+}
+/* pagenation css  */
+.pagenation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.pagenation li {
+    list-style: none;
+    padding: 0.2rem 0.5rem;
+}
+.pagenation li a {
+    text-decoration: none;
+    padding: 0.5rem;
+    background-color: var(--bg-surface-color);
+    border-radius: 5px;
+    color: var(--font-color);
+    transition: background-color 0.3s ease-in-out,
+                color 0.3s ease-in-out;
+}
+.pagenation li a:hover {
+    color: #121212 !important;
+    background-color: var(--primary-color);
+}
+.active {
+    background-color: var(--primary-color) !important;
+    color: #121212 !important;
+}
+.not-found {
+	background-color: var(--error-bg);	
+	color: var(--error-color);
+}
+.not-found td h2{
+	font-weight: 500;
+}
+@media only screen and (max-width: 900px) {
+	.table-wrapper {
+		width: 100%;
+		overflow-x: scroll;
+	}
+	tr td {
+		padding: 0.2rem;
+	}
+	.operation a:first-of-type {
+		margin-right: 0.2rem;
+	}
+}

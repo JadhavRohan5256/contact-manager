@@ -1,0 +1,61 @@
+<!doctype html >
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.com"
+	th:replace="normal/user-base-view::layout(~{::main})">
+<head>
+<meta charset="UTF-8" />
+<title>Profile</title>
+</head>
+<body>
+	<main class="main-container container">
+		<div class="toast" th:if="${message != null}">
+			<div class="toast-wrapper">
+				<p th:class="${message.messageType}" th:text="${message.messageDesc}"></p>
+				<i class="fa-solid fa-xmark close-toast"></i>
+			</div>
+		</div>
+		<div class="main-body">
+			<div class="profile-wrapper-animate">
+				<div class="animate-inside">
+					<div class="profile-wrapper">
+						<a th:href="@{/user/profile-edit}" class="user-edit">
+							<i class="fa-regular fa-pen-to-square" ></i>
+						</a>
+						<div class="profile-pic">
+							<div class="profile-animate">
+								<img
+									th:src="@{'/uploaded_profile/user_profile/' + ${user.getProfileName}}"
+									alt="profile" 
+								/>
+							</div>
+						</div>
+						<div class="profile-details">
+							<h2 class="profile-title">User Details</h2>
+							<div class="profile-box">
+								<p>First Name :</p>
+								<p th:text="' - ' + ${user.getFirstName}">John</p>
+							</div>
+							<div class="profile-box">
+								<p>Last Name :</p>
+								<p th:text="' - ' + ${user.getLastName}">Doe</p>
+							</div>
+							<div class="profile-box">
+								<p>contact number :</p>
+								<p th:text="' - ' + ${user.getContactNo}">9384838</p>
+							</div>
+							<div class="profile-box">
+								<p>email :</p>
+								<p th:text="' - ' + ${user.getEmail}" class="profile-email">demo@gmail.com</p>
+							</div>
+							<div class="profile-box">
+								<p>total contact :</p>
+								<p th:text="' - ' + ${totalContact}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

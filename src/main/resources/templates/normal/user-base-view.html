@@ -1,0 +1,96 @@
+<!-- inheriting this page -->
+<!doctype html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org/"
+	th:fragment="layout(content)">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" th:href="@{../../css/header-style.css}">
+<link rel="stylesheet" th:href="@{../../css/sidebar-style.css}">
+<link rel="stylesheet" th:href="@{../../css/profile-view-style.css}" />
+<link rel="stylesheet" th:href="@{../../css/add-contact-view-style.css}" />
+<link rel="stylesheet" th:href="@{../../css/show-contacts-style.css}" />
+<link rel="stylesheet" th:href="@{../../css/contact-edit-view-style.css}" />
+<link rel="stylesheet" th:href="@{../../css/signup-view-style.css}" />
+<link rel="stylesheet" th:href="@{../../css/setting-view-style.css}" />
+<body>
+	<header class="nav-bar">
+		<div class="container nav-bar-wrapper">
+			<div class="nav-bar-left">
+				<h2 class="logo">
+					<a th:href="@{/}">contact manager</a>
+				</h2>
+				<input 
+					type="checkbox" 
+					id="themeFlag"
+					name="themeFlag"
+				/>
+				<label for="themeFlag" class="theme-mode">
+					<i class="fa-solid fa-moon theme-icons"></i>
+				</label> 
+			</div>
+			<input 
+				type="checkbox"
+				name="check" 
+				id="check"
+			/> 
+			<label for="check" class="menu-icon"> 
+				<span class="top"></span> 
+				<span class="middle"></span> 
+				<span class="bottom"></span>
+			</label>
+			<div class="nav-bar-right">
+				<ul class="nav-link">
+					<li><a th:href="@{/}"> <i
+							class="fa-solid fa-house-user nav-icons"></i> home
+					</a></li>
+					<li><a th:href="@{/about-us}"> <i
+							class="fa-solid fa-address-card nav-icons"></i> about
+					</a></li>
+					<li><a th:href="@{/logout}"> <i
+							class="fa-solid fa-right-from-bracket nav-icons"></i> logout
+					</a></li>
+					<li><a th:href="@{/user/profile}"> <i
+							class="fa-solid fa-user nav-icons"></i> profile
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="sidebar-menu">
+		<div class="container">
+			<input type="checkbox" name="sidebar-check" id="sidebar-check">
+			<label for="sidebar-check" class="sidebar-menu-icon"> <span
+				class="sidebar-top"></span> <span class="sidebar-middle"></span> <span
+				class="sidebar-bottom"></span>
+			</label>
+		</div>
+	</div>
+	<!-- sidebar for user pannel -->
+	<aside class="sidebar">
+		<ul class="sidebar-wrapper">
+			<li><i class="fa-solid fa-users sidebar-icons"></i> <a
+				th:href="@{/user/contacts/0}">Show contact</a></li>
+			<li><i class="fa-solid fa-user-plus sidebar-icons"></i> <a
+				th:href="@{/user/}">Add contact</a></li>
+			<li><i class="fa-solid fa-user sidebar-icons"></i> <a
+				th:href="@{/user/profile}">your profile</a></li>
+			<li><i class="fa-solid fa-gear sidebar-icons"></i> <a
+				th:href="@{/user/setting}">setting</a></li>
+			<li><i class="fa-solid fa-right-from-bracket sidebar-icons"></i>
+				<a th:href="@{/logout}">logout</a></li>
+		</ul>
+	</aside>
+	<main th:replace="${content}">
+		
+	</main>
+	<script th:src="@{../../js/header-script.js}"></script>
+	<script th:src="@{../../js/sidebar-script.js}"></script>
+	<script type="module" th:src="@{../../js/add-contact-view-script.js}"></script>
+	<script type="module" th:src="@{../../js/contact-edit-view-script.js}"></script>
+</body>
+</html>

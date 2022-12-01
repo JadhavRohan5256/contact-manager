@@ -1,0 +1,96 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 90px;
+    width: 200px;
+    height: calc(100vh - 100px);
+    z-index: 500;
+    transition: transform 1s ease-in-out;
+    background-color: var(--bg-surface-color);
+	transform: translateX(-202px);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0px 0px 2px var(--font-color);
+    overflow: hidden;
+}
+.sidebar-wrapper {
+	margin-top: 60px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/* sidebar icon css  */
+.sidebar-menu {
+	margin-top: 60px;
+	transform: none;
+	transition: transform 1s ease-in-out;
+	position: relative;
+	z-index: 3333;
+}
+.sidebar-menu-icon {
+	display: inline-block;
+	width: 30px;
+    transition: transform 1s ease-in-out;
+	cursor: pointer;
+}
+.sidebar-menu-icon span {
+    display: block;
+    width: 30px;
+    height: 1.5px;
+    transform: none;
+    transition: transform 1s ease-in-out;
+}
+.sidebar-menu-icon span:nth-child(2) {
+    margin: 6px 0;
+}
+.sidebar-top {
+	background-color: var(--primary-color);
+}
+.sidebar-middle {
+	background-color: var(--font-color);	
+}
+.sidebar-bottom {
+	background-color: var(--secondary-color);		
+}
+#sidebar-check:checked + .sidebar-menu-icon .sidebar-top{
+    transform: translateY(7.5px) rotate(45deg);
+}
+#sidebar-check:checked + .sidebar-menu-icon .sidebar-middle{
+    transform: translateX(-11rem) scale(0);
+}
+#sidebar-check:checked + .sidebar-menu-icon .sidebar-bottom{
+    transform: translateY(-7.5px) rotate(-405deg);
+}
+#sidebar-check{
+    display: none;
+}
+.sidebar-wrapper li {
+    width: 100%;
+    height: 30px;
+    list-style: none;
+    padding: 0 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.sidebar-wrapper li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--font-color);
+	margin-left: 1rem;
+}
+.sidebar-wrapper li:hover {
+    background-color: var(--primary-color);
+}
+.sidebar-icons {
+	font-size: 1.2rem;
+	color: var(--font-color);
+}
+.main-container {
+	height: calc(100vh - 80px) !important;
+	padding-top: 20px;
+	margin-top: 0;
+}

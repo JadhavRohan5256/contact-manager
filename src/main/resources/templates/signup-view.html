@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	th:replace="base-view::layout(~{::main})">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login page</title>
+</head>
+<body>
+	<main class="main-container container signup-main">
+		<div class="signup-wrapper">
+			<form th:action="@{/register}" method="post" enctype="multipart/form-data" th:object="${user}">
+				<div class="form-box message" th:if="${message != null}">
+					<p th:class="${message.messageType}" th:text="${message.messageDesc}"></p>
+				</div>
+				<div class="form-box">
+					<h2 class="signup-title">signup details</h2>
+				</div>
+				<div class="form-box">
+					<label for="firstName">First Name</label> 
+					<input 
+						type="text"
+						name="firstName" 
+						id="firstName"
+						placeholder="Enter first name here.." 
+						th:value="${user.getFirstName()}"
+					/>
+					<p 
+						th:class="${#fields.hasErrors('firstName')} ? error : ''"
+						th:each="e : ${#fields.errors('firstName')}" 
+						th:text="${e}"></p>
+				</div>
+				<div class="form-box">
+					<label for="lastName">Last Name</label> 
+					<input 
+						type="text"
+						name="lastName" 
+						id="lastName" 
+						placeholder="Enter last name here.." 
+						th:value="${user.getLastName()}"
+					/>
+					<p 
+						th:class="${#fields.hasErrors('lastName')} ? error : ''"
+						th:each="e: ${#fields.errors('lastName')}" 
+						th:text="${e}"></p>
+				</div>
+				<div class="form-box">
+					<label for="contactNo">Contact Number</label> 
+					<input 
+						type="text"
+						name="contactNo" 
+						id="contactNo" 
+						placeholder="Enter contact here.." 
+						th:value="${user.getContactNo()}"
+					/>
+					<p
+					  th:if="${contactError != null}"
+					  class="error"
+					  th:text="${contactError}"
+					  ></p> 
+					<p 
+					  th:class="${#fields.hasErrors('contactNo')} ? error : ''"
+					  th:each="e: ${#fields.errors('contactNo')}" 
+					  th:text="${e}"></p>
+				</div>
+				<div class="form-box">
+					<label for="email">E-Mail</label> 
+					<input 
+						type="text" 
+						name="email"
+						id="email" 
+						placeholder="Enter email here.." 
+						th:value="${user.getEmail()}"
+					/>
+					<p 
+					  th:class="${#fields.hasErrors('email')} ? error : ''"
+					  th:each="e: ${#fields.errors('email')}" 
+					  th:text="${e}" ></p>
+					<p
+					  th:if="${emailError != null}"
+					  class="error"
+					  th:text="${emailError}"
+					  ></p>
+				</div>
+				<div class="form-box">
+					<label for="password">Password</label> 
+					<input 
+						type="password"
+						name="password" 
+						id="password" 
+						placeholder="Enter password here.."
+						th:value="${user.getPassword()}" 
+					/>
+					<p
+					  th:class="${#fields.hasErrors('password')} ? error : ''" 
+					  th:each="e: ${#fields.errors('password')}" 
+					  th:text="${e}"></p>
+					<p 
+					  th:if="${passwordError != null}"
+					  class="error" 
+					  th:text="${passwordError}"></p>
+				</div>
+				<div class="form-box">
+					<input type="file" name="file" id="file" /> 
+					<label for="file"> 
+						<span class="label-left">
+							<span class="browse">Browse</span> 
+							<span class="selected-file">select file</span>
+						</span>
+						<small class="file-size"></small>
+					</label>
+					<p
+					   th:class="${fileError != ''} ? error : ''" 
+					   th:text="${fileError}"></p>
+				</div>
+				<img 
+					src="" 
+					alt="" 
+					class="selected-file-view"
+				/>
+				<div class="form-box">
+					<button type="submit" class="signup-btn">Signup</button>
+				</div>
+				<div class="form-box">
+					<a th:href="@{signin}" class="form-link">login</a>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+
+</html>

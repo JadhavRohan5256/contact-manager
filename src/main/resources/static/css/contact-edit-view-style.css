@@ -1,0 +1,14 @@
+.edit-selected-file{
+    padding: 0 0.2rem;
+}
+.edit-file-size {
+	padding: 0 0.2rem;
+}
+
+.edit-selected-file-view[src=""] {
+	display: none;
+}
+.edit-selected-file-view {
+	width: 100%;
+	border-radius: 5px;
+}

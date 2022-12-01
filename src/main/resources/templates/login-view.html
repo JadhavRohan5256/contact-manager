@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+	th:replace="base-view::layout(~{::main})">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login page</title>
+</head>
+<body>
+	<main class="login-main">
+		<div class="container login-wrapper">
+			<p th:text="${param}"></p>
+			<form th:action="@{/login}" method="post">
+				<div class="form-box">
+					<h2 class="login-title">login details</h2>
+				</div>
+				<div class="form-box message" th:if="${message != null}">
+					<p th:class="${message.messageType}"
+						th:text="${message.messageDesc}"></p>
+				</div>
+				<div class="form-box message" th:if="${param.error}">
+					<p class="error-message">Bad Credential!</p>
+				</div>
+				<div class="form-box message" th:if="${param.logout}">
+					<p class="success-message">Successfully Logout</p>
+				</div>
+				<div class="form-box">
+					<label for="username">E-Mail</label> <input type="text"
+						name="username" id="username" placeholder="Enter email here.."
+						value="rohanjadhav2001@yahoo.com" />
+				</div>
+				<div class="form-box">
+					<label for="password">Password</label> <input type="password"
+						name="password" id="password" placeholder="Enter password here.."
+						value="Rj@12345" />
+				</div>
+				<div class="form-box">
+					<a th:href="@{/forgate}" class="forgate-pass">forgate password</a>
+				</div>
+				<div class="form-box">
+					<button type="submit" class="login-btn">login</button>
+				</div>
+				<div class="form-box">
+					<a th:href="@{/signup}" class="form-link">signup</a>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+
+</html>
