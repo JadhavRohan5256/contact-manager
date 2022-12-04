@@ -60,14 +60,3 @@ themeFlag.addEventListener('change', () => {
 		dark();
 	}
 })
-
-
-//tost message 
-let toast = document.querySelector('.toast');
-let toastClose = document.querySelector('.close-toast');
-
-if (toastClose != null) {
-	toastClose.addEventListener('click', () => {
-		toast.style.display = "none";
-	});
-}
