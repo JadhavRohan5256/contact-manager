@@ -18,8 +18,8 @@ public class MessageService {
 	public boolean sendMessage(String messageSubject, String messageTo, String message) {
 		String subject = "Conatct Manager - " + messageSubject;
 		String from = "birthdate2001@gmail.com";
-		final String username = ""; // email id
-		final String password = ""; // google 2 step verification password
+		final String username = "birthdate2001@gmail.com"; // email id
+		final String password = "osjetihyhczrxwgz"; // google 2 step verification password
 		final String host = "smtp.gmail.com";
 		
 		Properties properties = System.getProperties();

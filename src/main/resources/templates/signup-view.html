@@ -120,6 +120,9 @@
 					alt="" 
 					class="selected-file-view"
 				/>
+				<a 
+					th:if="${verification != null}"
+					th:href="@{email-verification}" class="form-link">Resend Mail</a>
 				<div class="form-box">
 					<button type="submit" class="signup-btn">Signup</button>
 				</div>

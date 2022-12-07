@@ -62,12 +62,23 @@ public class RegisterController {
 				}
 				
 				User alreadyExitContact = userDao.getUserByContactNo(user.getContactNo());
+				if(!alreadyExitContact.getVerificationCode().isEmpty()) {
+					req.getSession().setAttribute("user", alreadyExitContact);
+					model.addAttribute("verification", "you already register but not verify verify your mail using resend mail");
+					throw new Exception("you already register but not verify! verify your mail using resend mail");
+				}
 				if(alreadyExitContact != null) {
 					model.addAttribute("contactError", "contact number is already exit please use different contact number!");
 					throw new Exception("contact number is already exit");
 				}
 				
+				
 				User alreadyExitEmail = userDao.getUserByEmail(user.getEmail());
+				if(!alreadyExitEmail.getVerificationCode().isEmpty()) {
+					req.getSession().setAttribute("user", alreadyExitEmail);
+					model.addAttribute("verification", "you already register but not verify verify your mail using resend mai");
+					throw new Exception("you already register but not verify! verify your mail using resend mail");
+				}
 				if(alreadyExitEmail != null) {
 					model.addAttribute("emailError", "email already exist choose different email");
 					throw new Exception("email already exit");
@@ -134,7 +145,31 @@ public class RegisterController {
 				userDao.save(user);
 				redirectAttributes.addFlashAttribute("message", new Message("success-message", "your email is verified"));				
 			}
+		
 			return "redirect:/signin";
+			
+		}
+		
+		
+		@GetMapping("/email-verification")
+		public String sendMail(HttpServletRequest req) {
+			User user = (User)req.getSession().getAttribute("user");
+			if(user == null) {
+				return "redirect:/signin";
+			}
+			String verifyCode = RandomString.make(64);
+			user.setVerificationCode(verifyCode);
+			userDao.save(user);
+			String siteURL = req.getRequestURL().toString().replace(req.getServletPath(), "");
+			siteURL += "/verification?code=" + user.getVerificationCode();
+			String message = "Dear " + user.getFirstName() + " " + user.getLastName() + ",<br>"
+		            + "Please click the link below to verify your registration:<br>"
+		            + "<h3><a href='"+siteURL+"' target='_self' style='text-decoration:none; text-align:center;'>VERIFY</a></h3>"
+		            + "Thank you,<br>"
+		            + "Contact Manager.";
+		     
+			messageService.sendMessage("register confirmation", user.getEmail(), message);
+			return "register-success-view";
 			
 		}
 }
